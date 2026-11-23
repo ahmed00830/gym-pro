@@ -1,0 +1,22 @@
+{
+  "extends": "./tsconfig.node.json",
+  "compilerOptions": {
+    "composite": false,
+    "module": "CommonJS",
+    "moduleResolution": "Node",
+    "outDir": ".test-build",
+    "rootDir": ".",
+    "noEmit": false,
+    "sourceMap": true
+  },
+  "include": [
+    "src/main/database/**/*.ts",
+    "src/shared/**/*.ts",
+    "tests/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "out",
+    ".test-build"
+  ]
+}

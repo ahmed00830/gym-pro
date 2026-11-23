@@ -1,0 +1,51 @@
+{
+  "name": "gym-pro",
+  "productName": "GYM PRO",
+  "version": "0.1.0",
+  "description": "GYM PRO — an offline desktop gym management application for Windows.",
+  "main": "./out/main/index.js",
+  "author": "GYM PRO",
+  "license": "UNLICENSED",
+  "private": true,
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "postinstall": "install-electron",
+    "dev": "electron-vite dev",
+    "start": "electron-vite preview",
+    "typecheck:node": "tsc --noEmit -p tsconfig.node.json --composite false",
+    "typecheck:web": "tsc --noEmit -p tsconfig.web.json --composite false",
+    "typecheck": "npm run typecheck:node && npm run typecheck:web",
+    "test:database:build": "tsc -p tsconfig.test.json",
+    "test:database": "npm run test:database:build && electron .test-build/tests/database.electron.js seed && electron .test-build/tests/database.electron.js verify",
+    "test:production-database": "npm run build && node tests/production-database.cjs",
+    "test": "npm run test:database && npm run test:production-database",
+    "build": "npm run typecheck && electron-vite build"
+  },
+  "dependencies": {
+    "@fontsource-variable/readex-pro": "^5.3.0",
+    "@fontsource-variable/space-grotesk": "^5.3.0",
+    "better-sqlite3": "^13.1.1",
+    "lucide-react": "^1.72.0",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "recharts": "^3.10.1"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.3.5",
+    "@types/better-sqlite3": "^9.6.0",
+    "@types/node": "^24.19.2",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.3.0",
+    "electron": "^45.3.1",
+    "electron-vite": "^6.0.0",
+    "tailwindcss": "^4.3.5",
+    "typescript": "^5.9.3",
+    "vite": "^8.3.8"
+  },
+  "allowScripts": {
+    "better-sqlite3@13.1.1": true
+  }
+}
